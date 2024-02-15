@@ -39,4 +39,15 @@ public class Movie {
         return userRating;
     }
 
+    public String movieInfo() {
+        String str = "";
+        str += "Title: " + title;
+        str += "Runtime: " + runtime;
+        str += "Directed by: " + director;
+        str += "Cast: " + cast;
+        str += "Overview: " + overview;
+        str += "User Rating: " + userRating;
+        return str;
+    }
+
 }

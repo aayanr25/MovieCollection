@@ -13,6 +13,8 @@ public class MovieCollection {
 
     public MovieCollection() {
         importData();
+        sort();
+        mainMenu();
 
 
     }
@@ -31,6 +33,7 @@ public class MovieCollection {
             System.out.println(e.getMessage());
         }
     }
+
     public void sort() {
         for (int i = 1; i < movies.size(); i++) {
             Movie movie = movies.get(i);
@@ -40,29 +43,35 @@ public class MovieCollection {
                 index--;
             }
             movies.set(index, movie);
+        }
     }
-    public void mainMenu() {
-        System.out.println("Welcome to the movie collection!");
-        String menuOption = "";
 
-        while (!menuOption.equals("q")) {
-            System.out.println("------------ Main Menu ----------");
-            System.out.println("- search (t)itles");
-            System.out.println("- search (c)ast");
-            System.out.println("- (q)uit");
-            System.out.print("Enter choice: ");
-            menuOption = scan.nextLine();
+        public void mainMenu() {
+            System.out.println("Welcome to the movie collection!");
+            String menuOption = "";
 
-            if (menuOption.equals("t")) {
-                searchTitles();
-            } else if (menuOption.equals("c")) {
-                searchCast();
-            } else if (menuOption.equals("q")) {
-                System.out.println("Goodbye!");
-            } else {
-                System.out.println("Invalid choice!");
+            while (!menuOption.equals("q")) {
+                System.out.println("------------ Main Menu ----------");
+                System.out.println("- search (t)itles");
+                System.out.println("- search (c)ast");
+                System.out.println("- (q)uit");
+                System.out.print("Enter choice: ");
+                menuOption = scan.nextLine();
+                if (menuOption.equals("t")) {
+                    searchTitles();
+                } else if (menuOption.equals("c")) {
+                    searchCast();
+                } else if (menuOption.equals("q")) {
+                    System.out.println("Goodbye!");
+                } else {
+                    System.out.println("Invalid choice!");
+                }
             }
+
         }
 
-    }
+
+
+
+
 }
