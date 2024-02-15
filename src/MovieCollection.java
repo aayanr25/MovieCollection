@@ -12,6 +12,8 @@ public class MovieCollection {
 
 
     public MovieCollection() {
+        importData();
+
 
     }
 
@@ -22,8 +24,9 @@ public class MovieCollection {
             fileScanner = new Scanner(myFile);
             while (fileScanner.hasNext()) {
                 String data = fileScanner.nextLine();
+                String[] movieData = data.split(",");
+                movies.add(new Movie(movieData[0], movieData[1], movieData[2], movieData[4], Integer.parseInt(movieData[5]), Double.parseDouble(movieData[6])));
             }
-
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
