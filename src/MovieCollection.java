@@ -24,10 +24,14 @@ public class MovieCollection {
         try {
             File myFile = new File("src//movies_data.csv");
             fileScanner = new Scanner(myFile);
+            int idx = 0;
             while (fileScanner.hasNext()) {
                 String data = fileScanner.nextLine();
                 String[] movieData = data.split(",");
-                movies.add(new Movie(movieData[0], movieData[1], movieData[2], movieData[4], Integer.parseInt(movieData[5]), Double.parseDouble(movieData[6])));
+                if (idx > 0) {
+                    movies.add(new Movie(movieData[0], movieData[1], movieData[2], movieData[4], Integer.parseInt(movieData[5]), Double.parseDouble(movieData[6])));
+                }
+                idx++;
             }
         } catch (IOException e) {
             System.out.println(e.getMessage());
