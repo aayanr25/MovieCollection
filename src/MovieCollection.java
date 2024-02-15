@@ -9,14 +9,10 @@ public class MovieCollection {
     private Scanner scan;
 
 
-
-
     public MovieCollection() {
         importData();
         sort();
         mainMenu();
-
-
     }
 
     public void importData() {
@@ -50,32 +46,41 @@ public class MovieCollection {
         }
     }
 
-        public void mainMenu() {
-            System.out.println("Welcome to the movie collection!");
-            String menuOption = "";
-
-            while (!menuOption.equals("q")) {
-                System.out.println("------------ Main Menu ----------");
-                System.out.println("- search (t)itles");
-                System.out.println("- search (c)ast");
-                System.out.println("- (q)uit");
-                System.out.print("Enter choice: ");
-                menuOption = scan.nextLine();
-                if (menuOption.equals("t")) {
-                    searchTitles();
-                } else if (menuOption.equals("c")) {
-                    searchCast();
-                } else if (menuOption.equals("q")) {
-                    System.out.println("Goodbye!");
-                } else {
-                    System.out.println("Invalid choice!");
+    public ArrayList<String> searchCast() {
+        System.out.print("Enter a person to search for (first or last name): ");
+        String name = scan.nextLine();
+        ArrayList<String> list = new ArrayList<>();
+        for (Movie movie : movies) {
+            for (String member : movie.getCastMembers()) {
+                if (member.contains(name)) {
+                    list.add(member);
                 }
             }
-
         }
+        return list;
+    }
 
 
+    public void mainMenu () {
+        System.out.println("Welcome to the movie collection!");
+        String menuOption = "";
 
-
-
+        while (!menuOption.equals("q")) {
+            System.out.println("------------ Main Menu ----------");
+            System.out.println("- search (t)itles");
+            System.out.println("- search (c)ast");
+            System.out.println("- (q)uit");
+            System.out.print("Enter choice: ");
+            menuOption = scan.nextLine();
+            if (menuOption.equals("t")) {
+                searchTitles();
+            } else if (menuOption.equals("c")) {
+                searchCast();
+            } else if (menuOption.equals("q")) {
+                System.out.println("Goodbye!");
+            } else {
+                System.out.println("Invalid choice!");
+            }
+        }
+    }
 }
