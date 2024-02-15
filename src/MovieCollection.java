@@ -28,6 +28,16 @@ public class MovieCollection {
             System.out.println(e.getMessage());
         }
     }
+    public void sort() {
+        for (int i = 1; i < movies.size(); i++) {
+            Movie movie = movies.get(i);
+            int index = i;
+            while (index > 0 && movie.getTitle().compareTo(movies.get(i - 1).getTitle()) < 0) {
+                movies.set(index, movies.get(index - 1));
+                index--;
+            }
+            movies.set(index, movie);
+    }
     public void mainMenu() {
         System.out.println("Welcome to the movie collection!");
         String menuOption = "";
