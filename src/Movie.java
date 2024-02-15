@@ -6,5 +6,14 @@ public class Movie {
     private int runtime;
     private double userRating;
 
+    public Movie(String title, String cast, String director, String overview, int runtime, double userRating) {
+        this.title = title;
+        this.cast = cast;
+        this.director = director;
+        this.overview = overview;
+        this.runtime = runtime;
+        this.userRating = userRating;
+    }
+
 
 }
