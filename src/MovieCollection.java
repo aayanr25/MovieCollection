@@ -11,7 +11,7 @@ public class MovieCollection {
 
     public MovieCollection() {
         importData();
-        sortMovies();
+        sortMovies(movies);
         mainMenu();
     }
 
@@ -34,15 +34,19 @@ public class MovieCollection {
         }
     }
 
-    public void sortMovies() {
-        for (int i = 1; i < movies.size(); i++) {
-            Movie movie = movies.get(i);
-            int index = i;
-            while (index > 0 && movie.getTitle().compareTo(movies.get(i - 1).getTitle()) < 0) {
-                movies.set(index, movies.get(index - 1));
-                index--;
+    private static void sortMovies(ArrayList<Movie> movies) {
+        for (int i = 0; i < movies.size() - 1; i++) {
+            String min = movies.get(i).getTitle();
+            int minIDX = i;
+            for (int j = i + 1; j < movies.size(); j++) {
+                if (movies.get(j).getTitle().compareTo(min) < 0) {
+                    min = movies.get(j).getTitle();
+                    minIDX = j;
+                }
             }
-            movies.set(index, movie);
+            Movie temp = movies.get(i);
+            movies.set(i, movies.get(minIDX));
+            movies.set(minIDX, temp);
         }
     }
 
@@ -109,6 +113,7 @@ public class MovieCollection {
         String menuOption = "";
 
         while (!menuOption.equals("q")) {
+            System.out.println(movies);
             System.out.println("------------ Main Menu ----------");
             System.out.println("- search (t)itles");
             System.out.println("- search (c)ast");
