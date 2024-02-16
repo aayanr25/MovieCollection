@@ -119,6 +119,7 @@ public class MovieCollection {
                 System.out.println(movieInformation(list, num));
             } else if (menuOption.equals("c")) {
                 ArrayList<String> list = searchCast();
+                sort(list);
                 for (int i = 0; i < list.size(); i++) {
                     System.out.println((i + 1) + ". " + list.get(i));
                 }

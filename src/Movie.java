@@ -24,7 +24,7 @@ public class Movie {
         return cast;
     }
     public String[] getCastMembers() {
-        return cast.split("|");
+        return cast.split("\\|");
     }
     public String getDirector() {
         return director;
