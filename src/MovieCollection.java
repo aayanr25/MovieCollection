@@ -60,11 +60,11 @@ public class MovieCollection {
 
     public ArrayList<String> searchCast() {
         System.out.print("Enter a person to search for (first or last name): ");
-        String name = scan.nextLine();
+        String name = scan.nextLine().toLowerCase();
         ArrayList<String> list = new ArrayList<>();
         for (Movie movie : movies) {
             for (String member : movie.getCastMembers()) {
-                if (member.contains(name) && !list.contains(member)) {
+                if (member.toLowerCase().contains(name) && !list.contains(member)) {
                     list.add(member);
                 }
             }
@@ -74,7 +74,7 @@ public class MovieCollection {
     }
 
     public ArrayList<Movie> searchTitles() {
-        System.out.println("Enter a title search term: ");
+        System.out.print("Enter a title search term: ");
         String title = scan.nextLine().toLowerCase();
         ArrayList<Movie> list = new ArrayList<>();
         for (Movie movie : movies) {
