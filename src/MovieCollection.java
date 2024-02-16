@@ -11,7 +11,7 @@ public class MovieCollection {
 
     public MovieCollection() {
         importData();
-        sort();
+        sortMovies();
         mainMenu();
     }
 
@@ -34,7 +34,7 @@ public class MovieCollection {
         }
     }
 
-    public void sort() {
+    public void sortMovies() {
         for (int i = 1; i < movies.size(); i++) {
             Movie movie = movies.get(i);
             int index = i;
@@ -46,17 +46,30 @@ public class MovieCollection {
         }
     }
 
+    public void sort(ArrayList<String> array) {
+        for (int i = 1; i < array.size(); i++) {
+            String str = array.get(i);
+            int index = i;
+            while (index > 0 && str.compareTo(array.get(i - 1)) < 0) {
+                array.set(index, array.get(index - 1));
+                index--;
+            }
+            array.set(index, str);
+        }
+    }
+
     public ArrayList<String> searchCast() {
         System.out.print("Enter a person to search for (first or last name): ");
         String name = scan.nextLine();
         ArrayList<String> list = new ArrayList<>();
         for (Movie movie : movies) {
             for (String member : movie.getCastMembers()) {
-                if (member.contains(name)) {
+                if (member.contains(name) && !list.contains(member)) {
                     list.add(member);
                 }
             }
         }
+        sort(list);
         return list;
     }
 
