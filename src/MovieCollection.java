@@ -90,20 +90,8 @@ public class MovieCollection {
     }
 
     public String movieInformation(ArrayList<Movie> titles, int userChoice) {
-        String title = titles.get(userChoice - 1).getTitle();
-        Movie chosenMovie = null;
-        for (Movie movie : movies) {
-            if (movie.getTitle().equals(title)) {
-                chosenMovie = movie;
-                break;
-            }
-        }
-        try {
-            return chosenMovie.movieInfo();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            return null;
-        }
+        Movie chosenMovie =  titles.get(userChoice - 1);
+        return chosenMovie.movieInfo();
     }
 
 
@@ -111,10 +99,8 @@ public class MovieCollection {
         scan = new Scanner(System.in);
         System.out.println("Welcome to the movie collection!");
         String menuOption = "";
-        System.out.println(movies);
 
         while (!menuOption.equals("q")) {
-            System.out.println(movies);
             System.out.println("------------ Main Menu ----------");
             System.out.println("- search (t)itles");
             System.out.println("- search (c)ast");
@@ -130,12 +116,13 @@ public class MovieCollection {
                 System.out.print("Enter number: ");
                 int num = scan.nextInt();
                 scan.nextLine();
-                movieInformation(list, num);
+                System.out.println(movieInformation(list, num));
             } else if (menuOption.equals("c")) {
                 ArrayList<String> list = searchCast();
                 for (int i = 0; i < list.size(); i++) {
                     System.out.println((i + 1) + ". " + list.get(i));
                 }
+                System.out.println("Which actor do you want to see all movies for?");
                 System.out.print("Enter a number: ");
                 int actorIndex = scan.nextInt();
                 ArrayList<Movie> actorMovies = new ArrayList<>();
@@ -153,7 +140,7 @@ public class MovieCollection {
                 System.out.print("Enter number: ");
                 int num = scan.nextInt();
                 scan.nextLine();
-                movieInformation(actorMovies, num);
+                System.out.println(movieInformation(actorMovies, num));
             } else if (menuOption.equals("q")) {
                 System.out.println("Goodbye!");
             } else {

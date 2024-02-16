@@ -42,11 +42,11 @@ public class Movie {
     public String movieInfo() {
         String str = "";
         str += "Title: " + title;
-        str += "Runtime: " + runtime;
-        str += "Directed by: " + director;
-        str += "Cast: " + cast;
-        str += "Overview: " + overview;
-        str += "User Rating: " + userRating;
+        str += "\nRuntime: " + runtime;
+        str += "\nDirected by: " + director;
+        str += "\nCast: " + cast;
+        str += "\nOverview: " + overview;
+        str += "\nUser Rating: " + userRating;
         return str;
     }
 
