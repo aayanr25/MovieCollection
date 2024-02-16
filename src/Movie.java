@@ -50,4 +50,7 @@ public class Movie {
         return str;
     }
 
+    public String toString() {
+        return title;
+    }
 }

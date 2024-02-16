@@ -111,6 +111,7 @@ public class MovieCollection {
         scan = new Scanner(System.in);
         System.out.println("Welcome to the movie collection!");
         String menuOption = "";
+        System.out.println(movies);
 
         while (!menuOption.equals("q")) {
             System.out.println(movies);
