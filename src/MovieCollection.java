@@ -129,6 +129,19 @@ public class MovieCollection {
                 for (int i = 0; i < list.size(); i++) {
                     System.out.println((i + 1) + ". " + list.get(i));
                 }
+                System.out.print("Enter a number: ");
+                int actorIndex = scan.nextInt();
+                ArrayList<Movie> actorMovies = new ArrayList<>();
+                for (Movie movie : movies) {
+                    for (String member : movie.getCastMembers()) {
+                        if (member.equals(list.get(actorIndex))) {
+                            actorMovies.add(movie);
+                        }
+                    }
+                }
+                for (int i = 0; i < actorMovies.size(); i++) {
+                    System.out.println((i + 1) + ". " + actorMovies.get(i));
+                }
             } else if (menuOption.equals("q")) {
                 System.out.println("Goodbye!");
             } else {
