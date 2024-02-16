@@ -60,6 +60,18 @@ public class MovieCollection {
         return list;
     }
 
+    public ArrayList<String> searchTitles() {
+        System.out.println("Enter a title search term: ");
+        String title = scan.nextLine();
+        ArrayList<String> list = new ArrayList<>();
+        for (Movie movie : movies) {
+            if (movie.getTitle().contains(title)) {
+                list.add(movie.getTitle());
+            }
+        }
+        return list;
+    }
+
 
     public void mainMenu () {
         System.out.println("Welcome to the movie collection!");
