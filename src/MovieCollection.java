@@ -25,7 +25,7 @@ public class MovieCollection {
                 String data = fileScanner.nextLine();
                 String[] movieData = data.split(",");
                 if (idx > 0) {
-                    movies.add(new Movie(movieData[0], movieData[1], movieData[2], movieData[4], Integer.parseInt(movieData[5]), Double.parseDouble(movieData[6])));
+                    movies.add(new Movie(movieData[0], movieData[1], movieData[2], movieData[3], Integer.parseInt(movieData[4]), Double.parseDouble(movieData[5])));
                 }
                 idx++;
             }
@@ -75,10 +75,10 @@ public class MovieCollection {
 
     public ArrayList<Movie> searchTitles() {
         System.out.println("Enter a title search term: ");
-        String title = scan.nextLine();
+        String title = scan.nextLine().toLowerCase();
         ArrayList<Movie> list = new ArrayList<>();
         for (Movie movie : movies) {
-            if (movie.getTitle().contains(title)) {
+            if (movie.getTitle().toLowerCase().contains(title)) {
                 list.add(movie);
             }
         }
@@ -104,6 +104,7 @@ public class MovieCollection {
 
 
     public void mainMenu () {
+        scan = new Scanner(System.in);
         System.out.println("Welcome to the movie collection!");
         String menuOption = "";
 
