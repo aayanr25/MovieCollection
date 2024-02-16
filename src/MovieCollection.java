@@ -85,6 +85,23 @@ public class MovieCollection {
         return list;
     }
 
+    public String movieInformation(ArrayList<String> titles, int userChoice) {
+        String title = titles.get(userChoice - 1);
+        Movie chosenMovie = null;
+        for (Movie movie : movies) {
+            if (movie.getTitle().equals(title)) {
+                chosenMovie = movie;
+                break;
+            }
+        }
+        try {
+            return chosenMovie.movieInfo();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return null;
+        }
+    }
+
 
     public void mainMenu () {
         System.out.println("Welcome to the movie collection!");
@@ -102,6 +119,11 @@ public class MovieCollection {
                 for (int i = 0; i < list.size(); i++) {
                     System.out.println((i + 1) + ". " + list.get(i));
                 }
+                System.out.println("What movie would you like to learn more about?");
+                System.out.print("Enter number: ");
+                int num = scan.nextInt();
+                scan.nextLine();
+                movieInformation(list, num);
             } else if (menuOption.equals("c")) {
                 ArrayList<String> list = searchCast();
                 for (int i = 0; i < list.size(); i++) {
