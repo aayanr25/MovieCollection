@@ -98,9 +98,15 @@ public class MovieCollection {
             System.out.print("Enter choice: ");
             menuOption = scan.nextLine();
             if (menuOption.equals("t")) {
-                searchTitles();
+                ArrayList<String> list = searchTitles();
+                for (int i = 0; i < list.size(); i++) {
+                    System.out.println((i + 1) + ". " + list.get(i));
+                }
             } else if (menuOption.equals("c")) {
-                searchCast();
+                ArrayList<String> list = searchCast();
+                for (int i = 0; i < list.size(); i++) {
+                    System.out.println((i + 1) + ". " + list.get(i));
+                }
             } else if (menuOption.equals("q")) {
                 System.out.println("Goodbye!");
             } else {
