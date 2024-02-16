@@ -73,20 +73,20 @@ public class MovieCollection {
         return list;
     }
 
-    public ArrayList<String> searchTitles() {
+    public ArrayList<Movie> searchTitles() {
         System.out.println("Enter a title search term: ");
         String title = scan.nextLine();
-        ArrayList<String> list = new ArrayList<>();
+        ArrayList<Movie> list = new ArrayList<>();
         for (Movie movie : movies) {
             if (movie.getTitle().contains(title)) {
-                list.add(movie.getTitle());
+                list.add(movie);
             }
         }
         return list;
     }
 
-    public String movieInformation(ArrayList<String> titles, int userChoice) {
-        String title = titles.get(userChoice - 1);
+    public String movieInformation(ArrayList<Movie> titles, int userChoice) {
+        String title = titles.get(userChoice - 1).getTitle();
         Movie chosenMovie = null;
         for (Movie movie : movies) {
             if (movie.getTitle().equals(title)) {
@@ -115,9 +115,9 @@ public class MovieCollection {
             System.out.print("Enter choice: ");
             menuOption = scan.nextLine();
             if (menuOption.equals("t")) {
-                ArrayList<String> list = searchTitles();
+                ArrayList<Movie> list = searchTitles();
                 for (int i = 0; i < list.size(); i++) {
-                    System.out.println((i + 1) + ". " + list.get(i));
+                    System.out.println((i + 1) + ". " + list.get(i).getTitle());
                 }
                 System.out.println("What movie would you like to learn more about?");
                 System.out.print("Enter number: ");
@@ -142,6 +142,11 @@ public class MovieCollection {
                 for (int i = 0; i < actorMovies.size(); i++) {
                     System.out.println((i + 1) + ". " + actorMovies.get(i));
                 }
+                System.out.println("What movie would you like to learn more about?");
+                System.out.print("Enter number: ");
+                int num = scan.nextInt();
+                scan.nextLine();
+                movieInformation(actorMovies, num);
             } else if (menuOption.equals("q")) {
                 System.out.println("Goodbye!");
             } else {
